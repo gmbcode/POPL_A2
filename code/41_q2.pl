@@ -39,3 +39,19 @@ expression_text(bin(Op, Left, Right), ParentPrecedence, Side, Text) :-
     ->  format(string(Text), '(~s)', [Body])
     ;   Text = Body
     ).
+
+% Render a matching pair of integer-valued trees at each equation split.
+generate_equation(Numbers, Equation) :-
+    append(LeftNumbers, RightNumbers, Numbers),
+    LeftNumbers = [_|_],
+    RightNumbers = [_|_],
+    arithmetic_expression(LeftNumbers, LeftTree, Value),
+    arithmetic_expression(RightNumbers, RightTree, Value),
+    expression_text(LeftTree, 0, root, LeftText),
+    expression_text(RightTree, 0, root, RightText),
+    format(string(Equation), '~s=~s', [LeftText, RightText]).
+
+% Collect every equation in standard term order, removing duplicates.
+all_equations(Numbers, Equations) :-
+    findall(Equation, generate_equation(Numbers, Equation), Generated),
+    sort(Generated, Equations).
