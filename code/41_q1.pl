@@ -36,3 +36,20 @@ clue(4, Solution) :-
 % The friend who favors Java works in design.
 clue(5, Solution) :-
     memberchk(p(_, design, java, _), Solution).
+
+% Carla works outside development and prefers a project other than embedded.
+clue(6, Solution) :-
+    memberchk(p('Carla', Department, _, Project), Solution),
+    Department \= development,
+    Project \= embedded.
+
+% Dana works in research or testing and favors a language other than Java.
+clue(7, Solution) :-
+    memberchk(p('Dana', Department, Language, _), Solution),
+    Language \= java,
+    memberchk(Department, [research, testing]).
+
+% The friend who prefers data works in research and does not favor JavaScript.
+clue(8, Solution) :-
+    memberchk(p(_, research, Language, data), Solution),
+    Language \= javascript.
