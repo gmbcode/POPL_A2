@@ -55,3 +55,8 @@ generate_equation(Numbers, Equation) :-
 all_equations(Numbers, Equations) :-
     findall(Equation, generate_equation(Numbers, Equation), Generated),
     sort(Generated, Equations).
+
+% Count the distinct canonical equations for the given input.
+count_equations(Numbers, Count) :-
+    all_equations(Numbers, Equations),
+    length(Equations, Count).
