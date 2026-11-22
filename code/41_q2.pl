@@ -1,3 +1,5 @@
+:- use_module(library(lists), [append/3]).
+
 % Evaluate a binary operator on integer operands.
 apply_operation('+', Left, Right, Value) :-
     Value is Left + Right.

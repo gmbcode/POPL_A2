@@ -10,6 +10,7 @@ run_p2_tests :-
     p2_expect(exact_division, p2_exact_division),
     p2_expect(negative_intermediate, p2_negative_intermediate),
     p2_expect(canonical_parentheses, p2_canonical_parentheses),
+    p2_expect(subtraction_parentheses, p2_subtraction_parentheses),
     p2_expect(large_integer, p2_large_integer).
 
 p2_expect(Label, Goal) :-
@@ -62,8 +63,13 @@ p2_canonical_parentheses :-
     memberchk("6=1+2+3", Equations),
     memberchk("6=1+(2+3)", Equations),
     generate_equation([4,2,3,18], "(4+2)*3=18"),
+    generate_equation([4,2,3,10], "4+2*3=10"),
     generate_equation([8,4,2,4], "8/4*2=4"),
     generate_equation([8,4,2,1], "8/(4*2)=1").
+
+p2_subtraction_parentheses :-
+    generate_equation([1,2,3,0,4], "1-2-3=0-4"),
+    generate_equation([1,2,3,2], "1-(2-3)=2").
 
 p2_large_integer :-
     generate_equation([100000000000000000000,2,50000000000000000000],

@@ -1,3 +1,6 @@
+:- use_module(library(lists), [member/2, permutation/2]).
+:- use_module(library(aggregate), [aggregate_all/3]).
+
 % Generate a complete assignment that satisfies every active clue.
 puzzle_solution(Active, Solution) :-
     Solution = [p('Alex', AlexDept, AlexLang, AlexProject),

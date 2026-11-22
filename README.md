@@ -97,8 +97,8 @@ racket tests/s2_tests.rkt
 ```
 
 - **P1** checks the numbered clues, selected clue sets, the original and repaired counts, and the exact layout of `main/0` output.
-- **P2** checks the handout examples, short and unsatisfiable inputs, exact division, large integers, and parentheses that distinguish different expression trees.
-- **S1** checks silent loading and exact output on balanced, right-skewed, symbolic, empty, and single-node trees.
+- **P2** checks the handout's equation and parentheses examples, short and unsatisfiable inputs, exact division, and large integers.
+- **S1** checks silent loading and exact output on balanced, left-skewed, right-skewed, symbolic, empty, and single-node trees, plus a tree with nonempty subtrees of unequal height.
 - **S2** checks the four standard-input examples, an exact-length predicate, thresholds at the boundary, empty sublists, nesting depth 100, and a 10,000-element list.
 
 ## Skills, prompts, and report
@@ -116,8 +116,8 @@ All four suites passed on November 22, 2026, using SWI-Prolog 9.2.9 and Racket 8
 | Suite | Result | Checks passed |
 | --- | --- | --- |
 | P1 · Department assignment | Pass | 7 of 7 |
-| P2 · Arithmetic equations | Pass | 7 of 7 |
-| S1 · Binary tree traversals | Pass | 6 of 6 |
+| P2 · Arithmetic equations | Pass | 8 of 8 |
+| S1 · Binary tree traversals | Pass | 8 of 8 |
 | S2 · Nested list insertion | Pass | 10 of 10 |
 
 The Prolog runners exited silently with status zero. RackUnit reported zero failures and zero errors for both Scheme suites.
