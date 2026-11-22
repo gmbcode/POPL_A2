@@ -19,3 +19,23 @@ arithmetic_expression(Numbers, bin(Op, LeftTree, RightTree), Value) :-
     arithmetic_expression(LeftNumbers, LeftTree, LeftValue),
     arithmetic_expression(RightNumbers, RightTree, RightValue),
     apply_operation(Op, LeftValue, RightValue, Value).
+
+operator_precedence('+', 1).
+operator_precedence('-', 1).
+operator_precedence('*', 2).
+operator_precedence('/', 2).
+
+% Render a tree, preserving how its operators associate with its parent.
+expression_text(num(Number), _, _, Text) :-
+    number_string(Number, Text).
+expression_text(bin(Op, Left, Right), ParentPrecedence, Side, Text) :-
+    operator_precedence(Op, Precedence),
+    expression_text(Left, Precedence, left, LeftText),
+    expression_text(Right, Precedence, right, RightText),
+    format(string(Body), '~s~a~s', [LeftText, Op, RightText]),
+    (   ( Precedence < ParentPrecedence
+        ; Side == right, Precedence =:= ParentPrecedence
+        )
+    ->  format(string(Text), '(~s)', [Body])
+    ;   Text = Body
+    ).
