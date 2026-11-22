@@ -109,4 +109,17 @@ The assignment breaks AI-assisted work into small units, such as a single predic
 - **Prompt records.** The separate files are [P1.md](prompts/P1.md), [P2.md](prompts/P2.md), [S1.md](prompts/S1.md), and [S2.md](prompts/S2.md). [Prompts.md](Prompts.md) collects the prompts verbatim in one table with the problem number and the recorded model label, `GPT-6.2-Sol`.
 - **P1 report.** [P1_REPORT.md](P1_REPORT.md) records the query for clues 1 through 8 and explains what the result says about the puzzle.
 
+## Test results
+
+All four suites passed on November 22, 2026, using SWI-Prolog 9.2.9 and Racket 8.18 [cs].
+
+| Suite | Result | Checks passed |
+| --- | --- | --- |
+| P1 · Department assignment | Pass | 7 of 7 |
+| P2 · Arithmetic equations | Pass | 7 of 7 |
+| S1 · Binary tree traversals | Pass | 6 of 6 |
+| S2 · Nested list insertion | Pass | 10 of 10 |
+
+The Prolog runners exited silently with status zero. RackUnit reported zero failures and zero errors for both Scheme suites.
+
 This repository is available under the [MIT License](LICENSE).
