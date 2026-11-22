@@ -24,3 +24,18 @@
       acc
       (let ([after-left (preorder-into (cadr tree) (cons (car tree) acc))])
         (preorder-into (caddr tree) after-left))))
+
+;; Prepend values to acc as the nodes are visited in postorder.
+(define (postorder-into tree acc)
+  (if (null? tree)
+      acc
+      (let* ([after-left (postorder-into (cadr tree) acc)]
+             [after-right (postorder-into (caddr tree) after-left)])
+        (cons (car tree) after-right))))
+
+(define (print-all-traversals tree)
+  (print-inorder tree)
+  (display (my-reverse (preorder-into tree '())))
+  (newline)
+  (display (my-reverse (postorder-into tree '())))
+  (newline))
