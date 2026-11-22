@@ -54,6 +54,10 @@ clue(8, Solution) :-
     memberchk(p(_, research, Language, data), Solution),
     Language \= javascript.
 
+% CLUE 9: The friend who prefers the AI project works in testing.
+clue(9, Solution) :-
+    memberchk(p(_, testing, _, 'AI'), Solution).
+
 % Print one assignment for the eight original clues.
 main :-
     once(puzzle_solution([1,2,3,4,5,6,7,8], Solution)),
