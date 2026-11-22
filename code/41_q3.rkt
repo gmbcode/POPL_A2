@@ -39,3 +39,18 @@
   (newline)
   (display (my-reverse (postorder-into tree '())))
   (newline))
+
+;; Return the height and leaf count together in one pass.
+(define (tree-statistics tree)
+  (cond
+    [(null? tree) '(0 0)]
+    [(and (null? (cadr tree)) (null? (caddr tree))) '(1 1)]
+    [else
+     (let* ([left-stats (tree-statistics (cadr tree))]
+            [right-stats (tree-statistics (caddr tree))])
+       (list (+ 1 (max (car left-stats) (car right-stats)))
+             (+ (cadr left-stats) (cadr right-stats))))]))
+
+(define (print-height-and-leaves tree)
+  (display (tree-statistics tree))
+  (newline))
