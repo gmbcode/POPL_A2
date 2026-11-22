@@ -53,3 +53,13 @@ clue(7, Solution) :-
 clue(8, Solution) :-
     memberchk(p(_, research, Language, data), Solution),
     Language \= javascript.
+
+% Print one assignment for the eight original clues.
+main :-
+    once(puzzle_solution([1,2,3,4,5,6,7,8], Solution)),
+    forall(member(p(Name, Department, Language, Project), Solution),
+           format('~a = [~a, ~a, ~a]~n', [Name, Department, Language, Project])).
+
+% Count complete assignments for the selected set of clues.
+count_solutions(Active, Count) :-
+    aggregate_all(count, puzzle_solution(Active, _), Count).
